@@ -7,12 +7,12 @@ const log = console.log.bind(console);
 const dayjs = require("dayjs");
 const fs = require("fs");
 const path = require("path");
-const storageAPI = require("@google-cloud/storage");
+const {Storage} = require('@google-cloud/storage');
 
 const ARTIFACT_PATH = "../../extraterm.artifacts";
 
 async function main() {
-  const storage = storageAPI({
+  const storage = new Storage({
     projectId: "extraterm",
     keyFilename: "extraterm-e7f88c1ce73f.json"
   });
