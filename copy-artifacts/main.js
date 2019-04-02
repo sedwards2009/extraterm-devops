@@ -26,7 +26,7 @@ async function main() {
 
     await bucket.upload(path.join(ARTIFACT_PATH, entry), {
       destination: destinationPath,
-      resumable: true,
+      resumable: false,
       validation: "crc32c",
     });
   }
