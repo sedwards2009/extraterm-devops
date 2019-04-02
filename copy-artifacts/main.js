@@ -10,7 +10,7 @@ const path = require("path");
 
 const ARTIFACT_PATH = "../../extraterm.artifacts";
 
-function* main() {
+async function main() {
   const storage = require("@google-cloud/storage")({
     projectId: "extraterm",
     keyFilename: "extraterm-e7f88c1ce73f.json"
