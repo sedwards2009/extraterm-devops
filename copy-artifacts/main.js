@@ -7,19 +7,18 @@ const log = console.log.bind(console);
 const dayjs = require("dayjs");
 const fs = require("fs");
 const path = require("path");
+const storageAPI = require("@google-cloud/storage");
 
 const ARTIFACT_PATH = "../../extraterm.artifacts";
 
 async function main() {
-  const storage = require("@google-cloud/storage")({
+  const storage = storageAPI({
     projectId: "extraterm",
     keyFilename: "extraterm-e7f88c1ce73f.json"
   });
-
   const bucket = storage.bucket("extraterm_builds");
 
   const dirBase = dayjs().format("YYYY-MM-DD HH:mm:ss");
-  log(dirBase);
 
   for (const entry of fs.readdirSync(ARTIFACT_PATH)) {
     const destinationPath = dirBase + "/" + entry;
