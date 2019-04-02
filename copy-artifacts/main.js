@@ -14,6 +14,6 @@ const fs = require("fs");
 // const bucket = storage.bucket("extraterm_builds");
 
 
-for (const entry of fs.readdirSync("../extraterm.artifacts")) {
+for (const entry of fs.readdirSync("../../extraterm.artifacts")) {
   log(entry);
 }
