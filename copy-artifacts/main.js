@@ -13,7 +13,7 @@ const ARTIFACT_PATH = "../../extraterm.artifacts";
 
 async function main() {
   const keyPath = process.argv[1];
-
+  log("keyPath: " + keyPath)
   const storage = new Storage({
     projectId: "extraterm",
     keyFilename: keyPath
