@@ -12,7 +12,7 @@ const {Storage} = require('@google-cloud/storage');
 const ARTIFACT_PATH = "../../extraterm.artifacts";
 
 async function main() {
-  const keyPath = process.argv[1];
+  const keyPath = process.argv[2];
   log("keyPath: " + keyPath)
   const storage = new Storage({
     projectId: "extraterm",
