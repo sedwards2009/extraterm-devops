@@ -18,7 +18,7 @@ exports.cleanBuildArtifacts = (data, context, callback) => {
 
 async function gcpClean(context, triggerFile) {
   if (context.eventType === "google.storage.object.finalize" && triggerFile.name === SIGNAL_FILENAME) {
-    log("Received trigger file ${SIGNAL_FILENAME}. Starting clean up.");
+    log(`Received trigger file ${SIGNAL_FILENAME}. Starting clean up.`);
     const bucket = openBucket(null);
     await clean(bucket);
     await bucket.file(SIGNAL_FILENAME).delete();
