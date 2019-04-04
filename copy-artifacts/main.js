@@ -32,6 +32,14 @@ async function main() {
       validation: "crc32c",
     });
   }
+  
+  // Trigger the  GCP function to clean up the old files.
+  await bucket.upload("request_clean", {
+    destination: "request_clean",
+    resumable: false,
+    validation: "crc32c",
+  });
+
   log("Done");
 }
 
