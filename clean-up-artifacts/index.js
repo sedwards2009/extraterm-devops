@@ -6,7 +6,7 @@
 const {Storage} = require('@google-cloud/storage');
 
 const SIGNAL_FILENAME = "request_clean";
-const MAX_DIRS = 1;
+const MAX_DIRS = 7;
 
 const log = console.log.bind(console);
 
