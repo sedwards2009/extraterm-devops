@@ -1,0 +1,11 @@
+{
+  "name": "clean-up-artifacts",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@google-cloud/storage": "^2.4.3"
+  }
+}
