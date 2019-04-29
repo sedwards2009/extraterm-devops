@@ -22,17 +22,19 @@ async function main() {
 
   const dirBase = dayjs().format("YYYY-MM-DD HH:mm:ss");
 
-  for (const entry of fs.readdirSync(ARTIFACT_PATH)) {
-    const destinationPath = dirBase + "/" + entry;
-    log(`Uploading ${entry} to ${destinationPath}`);
+  for (const dirEntry of fs.readdirSync(ARTIFACT_PATH)) {
+    const dirPath = path.join(ARTIFACT_PATH, dirEntry);
+    for (const entry of fs.readdirSync(dirPath)) {
+      const destinationPath = dirBase + "/" + entry;
+      log(`Uploading ${entry} to ${destinationPath}`);
 
-    await bucket.upload(path.join(ARTIFACT_PATH, entry), {
-      destination: destinationPath,
-      resumable: false,
-      validation: "crc32c",
-    });
-  }
-  
+      await bucket.upload(path.join(dirPath, entry), {
+        destination: destinationPath,
+        resumable: false,
+        validation: "crc32c",
+      });
+    }
+  }  
   // Trigger the  GCP function to clean up the old files.
   await bucket.upload("request_clean", {
     destination: "request_clean",
